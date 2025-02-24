@@ -14,6 +14,21 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 import seaborn as sns
+import subprocess
+import sys
+
+# Function to install wordcloud if not already installed
+def install_wordcloud():
+    try:
+        import wordcloud
+    except ImportError:
+        print("Installing wordcloud...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "wordcloud"])
+        import wordcloud
+
+# Install wordcloud if necessary
+install_wordcloud()
+
 from wordcloud import WordCloud
 
 # Load word frequency data
